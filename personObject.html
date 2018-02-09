@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Person Constructor Function</title>
+</head>
+<body>
+    <script>
+        function Person(first, last, age, gender, interests) {
+            this.name = {
+                'first' : first,
+                'last'  : last
+            }
+            this.age = age;
+            this.gender = gender;
+            this.interests = interests;
+
+            this.bio = function() {
+                var string = this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. ';
+                var pronoun;
+                
+                if(gender === 'Female' || gender === 'female' || gender === 'F' || gender === 'f') {
+                    pronoun = 'She likes ';
+                }else if(gender === 'Male' || gender === 'male' || gender === 'M' || gender === 'm') {
+                    pronoun = 'He likes ';
+                }else {
+                    pronoun = 'They like ';
+                }
+
+                string += pronoun;
+                //Check against Number of interest
+                if(this.interests.length === 1){
+                    string += this.interests[0] + '.';
+                }else if(this.interests.length === 2) {
+                    string += this.interests[0] + ' and ' + this.interests[1] + '.';
+                }else {
+                //Interest more than 2
+                    for(var i = 0; i < this.interests.length; i++) {
+                        if(i === this.interests.length - 1) {
+                            string += 'and ' + this.interests[i] + '.';
+                        }else {
+                            string += this.interests[i] + ', ';
+                        }
+                    }
+                    alert(string);                    
+                }
+            }
+        }
+
+        var person1 = new Person('Oluseyi', 'Anani', 29, 'Male', ['Coding', 'Music', 'Photography', 'Entrepreneurship', 'Startup'])
+    </script>
+    
+</body>
+</html>
